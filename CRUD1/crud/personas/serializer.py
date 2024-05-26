@@ -9,6 +9,7 @@ from personas.models import Personas,ciudad
 #        if self.q:
  #           qs=qs.filter(nombre_incontains=self.q)
   #      return qs
+#aa
 
 class PersonasSerializer(serializers.ModelSerializer):  # Ajustado el nombre de la clase para seguir la convención de nomenclatura
 
