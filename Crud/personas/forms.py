@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.contrib.admin.widgets import AutocompleteSelect
+from django.shortcuts import  render, redirect
 from django.http import HttpResponse
 from .models import Personas
 import datetime
 
-def CiudadFormulario(request):
+
+def Formulario(request):
     if request.method == 'POST':
         documento = request.POST.get('documento')
         nombre = request.POST.get('nombre')

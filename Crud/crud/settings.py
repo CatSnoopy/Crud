@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_select2',
     'rest_framework',
     'personas',
 ]
@@ -79,9 +78,9 @@ WSGI_APPLICATION = 'crud.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
+        'NAME': 'crud',
+        'USER': 'fabrica',
+        'PASSWORD': 'fabrica2024*',
         'HOST': 'localhost',
         'PORT': '5432',
     }

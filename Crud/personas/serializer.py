@@ -1,18 +1,16 @@
 from rest_framework import serializers
 from personas.models import Personas
-#from dal import autocomplete
+#from personas.models import ciudad
 
-#class CiudadAutocomplete(autocomplete.Select2QuerySetView):
-    #def get_queryset(self):
-     #   qs=ciudad.objects.all()
 
-#        if self.q:
- #           qs=qs.filter(nombre_incontains=self.q)
-  #      return qs
-#aa
+
 
 class PersonasSerializer(serializers.ModelSerializer):  # Ajustado el nombre de la clase para seguir la convención de nomenclatura
 
     class Meta:
         model = Personas
-        fields = '__all__'  
+        fields = ('__all__')  
+        
+    """def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['ciudad'].queryset = ciudad.objects.none()"""
