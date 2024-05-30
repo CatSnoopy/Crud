@@ -34,7 +34,7 @@ def crear_personas(request):
     if not (documento_nuevo and nombre_nuevo and apellidos_nuevo and fecha_nacimiento_nuevo and ciudad_nuevo and correo_nuevo and telefono_nuevo and ocupacion_nuevo):
             # Verificar si algún campo obligatorio está vacío
             return render(
-                request, "formulario_persona.html", {"error": "Todos los campos son obligatorios"}
+                request, "formulario.html", {"error": "Todos los campos son obligatorios"}
             )
 
 
