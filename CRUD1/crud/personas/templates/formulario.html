@@ -70,15 +70,15 @@
             <h3 class="h6">{{task.title}}</h3>
             <p>{{task.description}}</p>
           </div>
-          <form action="{% url 'delete_task' task.id %}" method="POST">
-            {% csrf_token %}
+          <form action="{ url 'delete_task' task.id" method="POST">
+            
             <button class="btn btn-danger">Delete</button>
           </form>
         </div>
       </div>
-      {% empty %}
+      
       <h1 class="text-light">No tasks yet</h1>
-      {% endfor %}
+      
     </div>
   </body>
 </html>
