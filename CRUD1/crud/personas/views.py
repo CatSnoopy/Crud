@@ -36,6 +36,7 @@ def crear_personas(request):
             return render(
                 request, "formulario.html", {"error": "Todos los campos son obligatorios"}
             )
+personas.save()
 return redirect("/personas/")
 
 
