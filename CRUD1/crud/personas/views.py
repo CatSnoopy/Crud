@@ -41,7 +41,7 @@ personas.save()
 return redirect("/personas/")
 
 
-def delete(request, personas_id):
+def delete_personas(request, personas_id):
     personas = Personas.objects.get(id=personas_id)
     personas.delete()
     return redirect("/personas/")
