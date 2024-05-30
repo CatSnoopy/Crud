@@ -3,48 +3,40 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 
-
-
-
 # Create your views here.
 
-
-"""def formulario(request):
-    form=PersonasSerializer()
-    return render(request, 'formulario.html',)
-
-def buscar(request):
-    form = formulario()
-    return render(request, 'Buscar_ciudad.html', {'form': form})
-"""
 def formulario(request):
     personas=Personas.objects.all()
     return render(request, 'formulario.html',{"personas":personas})
 
-def crear_personas(request):
-    Personas= Personas(
+def crear_personas(request,personas_id):
+    
     documento_nuevo = request.POST['documento'],
-    nombre_nuevo = request.POST('nombre'),
-    apellidos_nuevo = request.POST('apellidos'),
-    fecha_nacimiento_nuevo = request.POST('fecha_nacimiento'),
-    ciudad_nuevo = request.POST('ciudad'),
-    correo_nuevo = request.POST('correo'),
-    telefono_nuevo = request.POST('telefono'),
-    ocupacion_nuevo = request.POST('ocupacion'))
-    if not (documento_nuevo and nombre_nuevo and apellidos_nuevo and fecha_nacimiento_nuevo and ciudad_nuevo and correo_nuevo and telefono_nuevo and ocupacion_nuevo):
-            # Verificar si algún campo obligatorio está vacío
+    nombre_nuevo = request.POST['nombre'],
+    apellidos_nuevo = request.POST['apellidos'],
+    fecha_nacimiento_nuevo = request.POST['fecha_nacimiento'],
+    ciudad_nuevo = request.POST['ciudad'],
+    correo_nuevo = request.POST['correo'],
+    telefono_nuevo = request.POST['telefono'],  
+    ocupacion_nuevo = request.POST['ocupacion']
+    if documento_nuevo==""or nombre_nuevo==""or apellidos_nuevo==""or fecha_nacimiento_nuevo ==""or ciudad_nuevo==""or correo_nuevo==""or telefono_nuevo==""or ocupacion_nuevo=="":
+            personas= Personas.objects.all()
             return render(
-                request, "formulario.html", {"error": "Todos los campos son obligatorios"}
+                request, "formulario.html", {"personas": personas,"error": "Todos los campos son obligatorios"}
             )
-    personas = Personas (documento=documento_nuevo,nombre=nombre,apellidos=apellidos_nuevo,fecha_nacimiento=fecha_nacimiento_nuevo,ciudad=ciudad_nuevo,correo=correo_nuevo,telefono=telefono_nuevo,ocupacion=ocupacion_nuevo,)
-personas.save()
-return redirect("/personas/")
-
-
-def delete_personas(request, personas_id):
-    personas = Personas.objects.get(id=personas_id)
-    personas.delete()
+    personas = Personas.objects.create (documento=documento_nuevo,
+                         nombre=nombre_nuevo,
+                         apellidos=apellidos_nuevo,
+                         fecha_nacimiento=fecha_nacimiento_nuevo,
+                         ciudad=ciudad_nuevo,
+                         correo=correo_nuevo,
+                         telefono=telefono_nuevo,
+                         ocupacion=ocupacion_nuevo)
+    personas.save()
     return redirect("/personas/")
 
- 
 
+def delete_personas( personas_id):
+    personas = Personas(id=personas_id)
+    personas.delete()
+    return redirect("/personas/")

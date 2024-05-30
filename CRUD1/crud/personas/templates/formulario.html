@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Cliente</title>
-    
-    
+    <link rel="stylesheet" href="css.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
     <!-- Agregar enlaces a las bibliotecas de jQuery y Select2 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
@@ -20,8 +25,8 @@
 <body>
     
     <h1>Registro de Cliente</h1>
-    <form action="/personas/nueva/" method="post">
-    
+    <form action="/personas/new/" method="post">
+     {% csrf_token %}
         
         <label for="documento">Número de Documento:</label>
         <input type="text" id="documento" name="documento" required><br><br>
@@ -59,28 +64,32 @@
             <option value="Independiente">Independiente</option>
             <option value="Pensionado">Pensionado</option>
         </select><br><br>
-     <input type="submit" value="Registrar" class="resetear">
-
+     <button class="btn btn-primaty">Registro</button>
+     
     </form>
-    <div class="list-group">
+    <div class="lista-group">
         <div
           class="card card-body bg-secondary text-light d-flex flex-row justify-content-between mb-2"
         >
           <div>
-            <h3 class="h6">{{task.title}}</h3>
-            <p>{{task.description}}</p>
+            <h3 class="h6">{{personas.documento}}</h3>
+            <p>{{personas.nombre}}</p>
+            <p>{{personas.apellidos}}</p>
+            <p>{{personas.fecha_nacimiento}}</p>
+            <p>{{personas.ciudad}}</p>
+            <p>{{personas.correo}}</p>
+            <p>{{personas.telefono}}</p>
+            <p>{{personas.ocupacion}}</p>
           </div>
-          <form action="{ url 'delete_task' task.id" method="POST">
-            
+          <form action="url 'delete_personas' personas.id " method="POST">
+            {% csrf_token %}
             <button class="btn btn-danger">Delete</button>
           </form>
         </div>
       </div>
       
-      <h1 class="text-light">No tasks yet</h1>
+      <h1 class="text-light">personas </h1>
       
     </div>
-  </body>
-</html>
 </body>
 </html>
