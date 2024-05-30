@@ -41,7 +41,7 @@ def crear_personas(request):
 def delete(request, personas_id):
     personas = Personas.objects.get(id=personas_id)
     personas.delete()
-    return redirect("/tasks/")
+    return redirect("/personas/")
 
  
 
