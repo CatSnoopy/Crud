@@ -36,7 +36,7 @@ def crear_personas(request):
             return render(
                 request, "formulario.html", {"error": "Todos los campos son obligatorios"}
             )
-return redirect("/tasks/")
+return redirect("/personas/")
 
 
 def delete(request, personas_id):
