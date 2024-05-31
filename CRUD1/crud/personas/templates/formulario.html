@@ -107,6 +107,12 @@
                         <button type="submit">Eliminar</button>
                     </form>
                 </li>
+                {% for persona in personas %}
+    <p>{{ persona.nombre }} {{ persona.apellidos }}</p>
+    <!-- Agregar un botón para editar -->
+    <a href="{% url 'editar_persona' persona.id %}">Editar</a>
+{% endfor %}
+
             {% endfor %}
               </ul>
           </body>
