@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'crud.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'crud',
-        'USER': 'fabrica',
-        'PASSWORD': 'fabrica2024*',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5432',
     }

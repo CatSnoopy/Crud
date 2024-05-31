@@ -1,5 +1,5 @@
 from django.db import models
-import datetime
+from datetime import datetime
 
 
 class Personas(models.Model):
@@ -25,6 +25,11 @@ class Personas(models.Model):
         default='',  # Opcional: establece un valor predeterminado
     )
 
-    def is_viable(self):
-        edad = (datetime.date.today() - self.fecha).days // 365
-        return 18 <= edad <= 65
+    def edad(self):
+        fecha_nacimiento = datetime.strptime(self.fecha_nacimiento, "%Y-%m-%d")
+        today = datetime.today()
+        age = today.year - fecha_nacimiento.year - ((today.month, today.day) < (fecha_nacimiento.month, fecha_nacimiento.day))
+        return age
+
+    def __str__(self):
+        return f"{self.nombre} {self.apellidos}"

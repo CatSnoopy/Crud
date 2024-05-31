@@ -44,11 +44,35 @@
         <select id="ciudad" name="ciudad" class="select2" required><br><br>
             <!-- Opciones de ciudades -->
             <option value=""></option>
-            <option value="ciudad1">Bogota</option>
-            <option value="ciudad2">Cali</option>
-            <option value="ciudad3">Medellin</option>
-            <option value="ciudad4">San Andres</option>
-            <option value="ciudad5">Barranquilla</option>
+    <option value="bogota">Bogotá</option>
+    <option value="medellin">Medellín</option>
+    <option value="cali">Cali</option>
+    <option value="barranquilla">Barranquilla</option>
+    <option value="cartagena">Cartagena</option>
+    <option value="bucaramanga">Bucaramanga</option>
+    <option value="pereira">Pereira</option>
+    <option value="cucuta">Cúcuta</option>
+    <option value="manizales">Manizales</option>
+    <option value="pasto">Pasto</option>
+    <option value="villavicencio">Villavicencio</option>
+    <option value="neiva">Neiva</option>
+    <option value="ibague">Ibagué</option>
+    <option value="santa marta">Santa Marta</option>
+    <option value="armenia">Armenia</option>
+    <option value="popayan">Popayán</option>
+    <option value="sincelejo">Sincelejo</option>
+    <option value="valledupar">Valledupar</option>
+    <option value="monteria">Montería</option>
+    <option value="manizales">Manizales</option>
+    <option value="santa marta">Santa Marta</option>
+    <option value="buenaventura">Buenaventura</option>
+    <option value="barrancabermeja">Barrancabermeja</option>
+    <option value="florencia">Florencia</option>
+    <option value="tunja">Tunja</option>
+    <option value="quibdo">Quibdó</option>
+    <option value="arauca">Arauca</option>
+    <option value="puerto carreño">Puerto Carreño</option>
+    <option value="leticia">Leticia</option>
             <!-- Fin de opciones de ciudades -->
         </select><br><br>
 
@@ -72,19 +96,22 @@
           class="card card-body bg-secondary text-light d-flex flex-row justify-content-between mb-2"
         >
           <div>
-            <h3 class="h6">{{personas.documento}}</h3>
-            <p>{{personas.nombre}}</p>
-            <p>{{personas.apellidos}}</p>
-            <p>{{personas.fecha_nacimiento}}</p>
-            <p>{{personas.ciudad}}</p>
-            <p>{{personas.correo}}</p>
-            <p>{{personas.telefono}}</p>
-            <p>{{personas.ocupacion}}</p>
+            <body>
+              <h1>Lista de Personas</h1>
+              <ul>
+                {% for persona in personas %}
+                <li>
+                    {{ persona.nombre }} {{ persona.apellidos }} - {{ persona.fecha_nacimiento }} - {{ persona.ciudad }} - {{ persona.correo }} - {{ persona.telefono }} - {{ persona.ocupacion }}
+                    <form action="{% url 'eliminar_persona' persona.numero_de_documento %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </li>
+            {% endfor %}
+              </ul>
+          </body>
           </div>
-          <form action="url 'delete_personas' personas.id " method="POST">
-            {% csrf_token %}
-            <button class="btn btn-danger">Delete</button>
-          </form>
+          
         </div>
       </div>
       
