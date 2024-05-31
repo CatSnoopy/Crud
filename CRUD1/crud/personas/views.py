@@ -43,6 +43,22 @@ def mostrar_personas(request):
     personas = Personas.objects.all()
     return render(request, 'mostrar_personas.html', {'personas': personas})
 
+def editar_persona(request, personas_id):
+    persona = get_object_or_404(Personas, pk=personas_id)
+
+    if request.method == 'POST':
+        persona.numero_de_documento = request.POST.get('documento', '')
+        persona.nombre = request.POST.get('nombre', '')
+        persona.apellidos = request.POST.get('apellidos', '')
+        persona.fecha_nacimiento = request.POST.get('fecha_nacimiento', '')
+        persona.ciudad = request.POST.get('ciudad', '')
+        persona.correo = request.POST.get('correo', '')
+        persona.telefono = request.POST.get('telefono', '')  
+        persona.ocupacion = request.POST.get('ocupacion', '')
+        persona.save()
+        return redirect('mostrar_personas')
+
+    return render(request, 'editar_persona.html', {'persona': persona})
 
 
 
