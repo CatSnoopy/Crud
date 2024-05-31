@@ -61,7 +61,6 @@ def editar_persona(request, personas_id):
     return render(request, 'editar_persona.html', {'persona': persona})
 
 
-
 def eliminar_persona(request, personas_id):
     persona = get_object_or_404(Personas, pk=personas_id)
     persona.delete()
