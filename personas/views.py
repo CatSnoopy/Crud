@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from datetime import date
-from .models import Persona
 
 
 # Create your views here.
@@ -21,7 +20,7 @@ def crear_personas(request):
     correo_nuevo = request.POST.get('correo', '')
     telefono_nuevo = request.POST.get('telefono', '')  
     ocupacion_nuevo = request.POST.get('ocupacion', '')
-    viable_nuevo = request.POST.get('ocupacion', '')
+    viable_nuevo = request.POST.get('viable', '')
 
     if not numero_de_documento_nuevo or not nombre_nuevo or not apellidos_nuevo or not fecha_nacimiento_nuevo or not ciudad_nuevo or not correo_nuevo or not telefono_nuevo or not ocupacion_nuevo or not viable_nuevo:
         personas = Personas.objects.all()
@@ -61,7 +60,7 @@ def editar_persona(request, personas_id):
         persona.correo = request.POST.get('correo', '')
         persona.telefono = request.POST.get('telefono', '')  
         persona.ocupacion = request.POST.get('ocupacion', '')
-        persona.vaible = request.POST.get('viable', '')
+        persona.viable = request.POST.get('viable', '')
         persona.save()
         
         # Redirigir al usuario de vuelta al formulario
@@ -74,4 +73,3 @@ def eliminar_persona(request, personas_id):
 
     # Redirigir al usuario de vuelta al formulario después de eliminar
     return redirect('mostrar_personas')
-

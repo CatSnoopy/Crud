@@ -24,17 +24,17 @@ class Personas(models.Model):
         choices=Ocupacion_CHOICES,
         default='',  # Opcional: establece un valor predeterminado
     )
-        Viable_CHOICES = [
+    Viable_CHOICES = [
 
         ('viable', 'Viable'),
         ('No_viable', 'No viable'),
        
     ]
 
-    Viable = models.CharField(
+    viable = models.CharField(
         max_length=20,
-        choices=viable_CHOICES,
-        default='',  # Opcional: establece un valor predeterminado
+        choices=Viable_CHOICES,
+        default='', ) # Opcional: establece un valor predeterminado
 
 
 
