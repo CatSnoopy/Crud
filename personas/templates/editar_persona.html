@@ -101,6 +101,11 @@
                     <!-- Agrega aquí las demás opciones de ocupación -->
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="viable" class="form-label">Viable:</label>
+                <select id="viable" name="viable" class="form-select" required>
+                    <option value="viable" {% if persona.viable == 'viable' %} selected {% endif %}>viable</option>
+                    <option value="No viable" {% if persona.viable == 'No viable' %} selected {% endif %}>No viable</option>
             <button class="btn btn-primary">Guardar Cambios</button>
         </form>
     </div>
