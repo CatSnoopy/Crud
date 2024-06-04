@@ -1,7 +1,10 @@
-
 from.models import Personas
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
+from datetime import date
+from .utils import es_viable
+from .models import Persona
 
 
 # Create your views here.
@@ -43,10 +46,12 @@ def mostrar_personas(request):
     personas = Personas.objects.all()
     return render(request, 'mostrar_personas.html', {'personas': personas})
 
+
 def editar_persona(request, personas_id):
     persona = get_object_or_404(Personas, pk=personas_id)
 
     if request.method == 'POST':
+        # Procesar el formulario y guardar los cambios
         persona.numero_de_documento = request.POST.get('documento', '')
         persona.nombre = request.POST.get('nombre', '')
         persona.apellidos = request.POST.get('apellidos', '')
@@ -56,10 +61,34 @@ def editar_persona(request, personas_id):
         persona.telefono = request.POST.get('telefono', '')  
         persona.ocupacion = request.POST.get('ocupacion', '')
         persona.save()
-        return redirect('mostrar_personas')
-
+        
+        # Redirigir al usuario de vuelta al formulario
+        return redirect('mostrar_personas')  
     return render(request, 'editar_persona.html', {'persona': persona})
 
+def eliminar_persona(request, personas_id):
+    persona = get_object_or_404(Personas, pk=personas_id)
+    persona.delete()
+
+    # Redirigir al usuario de vuelta al formulario después de eliminar
+    return redirect('mostrar_personas')
+
+def registro(request):
+    if request.method == 'POST':
+        form = personasform(request.POST)
+        if form.is_valid():
+            # Guardar la persona si es válida
+            persona = form.save(commit=False)
+            persona.save()
+            return redirect('mostrar_personas')
+    else:
+        form = personasForm()
+    
+    return render(request, 'registro.html', {'form': form})
+
+def lista_personas(request):
+    personas = Persona.objects.all()
+    return render(request, 'mostrar_personas.html', {'personas': personas})
 
 def eliminar_persona(request, personas_id):
     persona = get_object_or_404(Personas, pk=personas_id)
