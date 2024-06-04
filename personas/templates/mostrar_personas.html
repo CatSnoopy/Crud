@@ -13,7 +13,7 @@
         <ul class="list-group" id="lista-personas">
             {% for persona in personas %}
             <li class="list-group-item" id="persona-{{ persona.numero_de_documento }}">
-                {{ persona.nombre }} {{ persona.apellidos }} - {{ persona.fecha_nacimiento }} - {{ persona.ciudad }} - {{ persona.correo }} - {{ persona.telefono }} - {{ persona.ocupacion }}
+                {{ persona.nombre }} {{ persona.apellidos }} - {{ persona.fecha_nacimiento }} - {{ persona.ciudad }} - {{ persona.correo }} - {{ persona.telefono }} - {{ persona.ocupacion }} - {{ persona.viable }}
             </li>
             {% endfor %}
         </ul>
