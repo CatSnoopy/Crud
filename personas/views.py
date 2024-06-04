@@ -73,19 +73,3 @@ def eliminar_persona(request, personas_id):
     # Redirigir al usuario de vuelta al formulario después de eliminar
     return redirect('mostrar_personas')
 
-def registro(request):
-    if request.method == 'POST':
-        form = personasform(request.POST)
-        if form.is_valid():
-            # Guardar la persona si es válida
-            persona = form.save(commit=False)
-            persona.save()
-            return redirect('mostrar_personas')
-    else:
-        form = personasForm()
-    
-    return render(request, 'registro.html', {'form': form})
-
-def lista_personas(request):
-    personas = Persona.objects.all()
-    return render(request, 'mostrar_personas.html', {'personas': personas})
