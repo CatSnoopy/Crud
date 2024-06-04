@@ -25,28 +25,7 @@ class Personas(models.Model):
         default='',  # Opcional: establece un valor predeterminado
     )
 
-class Persona(models.Model):
-    nombre = models.CharField(max_length=100)
-    fecha_nacimiento = models.DateField()
-    # Otros campos del modelo...
 
-def edad(self):
-        fecha_nacimiento = datetime.strptime(self.fecha_nacimiento, "%Y-%m-%d")
-        today = datetime.today()
-        age = today.year - fecha_nacimiento.year - ((today.month, today.day) < (fecha_nacimiento.month, fecha_nacimiento.day))
-        return age
-
-def save(self, *args, **kwargs):
-        # Calcular la edad de la persona
-        edad = self.edad()
-
-        # Determinar si la persona es viable (entre 18 y 65 años)
-        if 18 <= edad <= 65:
-            self.viable = True
-        else:
-            self.viable = False
-
-        super().save(*args, **kwargs)
 
 def __str__(self):
         return f"{self.nombre} {self.apellidos}"
