@@ -22,8 +22,9 @@ def crear_personas(request):
     correo_nuevo = request.POST.get('correo', '')
     telefono_nuevo = request.POST.get('telefono', '')  
     ocupacion_nuevo = request.POST.get('ocupacion', '')
+    viable_nuevo = request.POST.get('ocupacion', '')
 
-    if not numero_de_documento_nuevo or not nombre_nuevo or not apellidos_nuevo or not fecha_nacimiento_nuevo or not ciudad_nuevo or not correo_nuevo or not telefono_nuevo or not ocupacion_nuevo:
+    if not numero_de_documento_nuevo or not nombre_nuevo or not apellidos_nuevo or not fecha_nacimiento_nuevo or not ciudad_nuevo or not correo_nuevo or not telefono_nuevo or not ocupacion_nuevo or not viable_nuevo:
         personas = Personas.objects.all()
         return render(
             request, "formulario.html", {"personas": personas, "error": "Todos los campos son obligatorios"}
@@ -37,7 +38,8 @@ def crear_personas(request):
         ciudad=ciudad_nuevo,
         correo=correo_nuevo,
         telefono=telefono_nuevo,
-        ocupacion=ocupacion_nuevo
+        ocupacion=ocupacion_nuevo,
+        viable=viable_nuevo
     )
     return redirect("/personas/")
 
@@ -60,6 +62,7 @@ def editar_persona(request, personas_id):
         persona.correo = request.POST.get('correo', '')
         persona.telefono = request.POST.get('telefono', '')  
         persona.ocupacion = request.POST.get('ocupacion', '')
+        persona.vaible = request.POST.get('viable', '')
         persona.save()
         
         # Redirigir al usuario de vuelta al formulario
