@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Persona</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <!-- Agregar enlaces a las bibliotecas de jQuery y Select2 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <!-- Inicializar Select2 -->
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Editar Persona</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="documento" class="form-label">Número de Documento:</label>
+                <input type="text" id="documento" name="documento" value="{{ persona.numero_de_documento }}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" value="{{ persona.nombre }}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="apellidos" class="form-label">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" value="{{ persona.apellidos }}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento:</label>
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ persona.fecha_nacimiento }}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="ciudad" class="form-label">Ciudad:</label>
+                <select id="ciudad" name="ciudad" class="form-select select2" required>
+                    <!-- Opciones de ciudades -->
+                    <!-- Agrega las opciones de ciudades aquí -->
+                    <option value=""></option>
+    <option value="bogota" {% if persona.ciudad == 'Bogotá' %} selected {% endif %}>Bogotá</option>
+    <option value="medellin" {% if persona.ciudad == 'Medellín' %} selected {% endif %}>Medellín</option>
+    <option value="cali" {% if persona.ciudad == 'Cali' %} selected {% endif %}>Cali</option>
+    <option value="barranquilla" {% if persona.ciudad == 'Barranquilla' %} selected {% endif %}>Barranquilla</option>
+    <option value="cartagena" {% if persona.ciudad == 'Cartagena' %} selected {% endif %}>Cartagena</option>
+    <option value="bucaramanga" {% if persona.ciudad == 'Bucaramanga' %} selected {% endif %}>Bucaramanga</option>
+    <option value="pereira" {% if persona.ciudad == 'Pereira' %} selected {% endif %}>Pereira</option>
+    <option value="cucuta" {% if persona.ciudad == 'Cúcuta' %} selected {% endif %}>Cúcuta</option>
+    <option value="manizales" {% if persona.ciudad == 'Manizales' %} selected {% endif %}>Manizales</option>
+    <option value="pasto" {% if persona.ciudad == 'Pasto' %} selected {% endif %}>Pasto</option>
+    <option value="villavicencio" {% if persona.ciudad == 'Villavicencio' %} selected {% endif %}>Villavicencio</option>
+    <option value="neiva" {% if persona.ciudad == 'Neiva' %} selected {% endif %}>Neiva</option>
+    <option value="ibague" {% if persona.ciudad == 'Ibagué' %} selected {% endif %}>Ibagué</option>
+    <option value="santa marta" {% if persona.ciudad == 'Santa Marta' %} selected {% endif %}>Santa Marta</option>
+    <option value="armenia" {% if persona.ciudad == 'Armenia' %} selected {% endif %}>Armenia</option>
+    <option value="popayan" {% if persona.ciudad == 'Popayán' %} selected {% endif %}>Popayán</option>
+    <option value="sincelejo" {% if persona.ciudad == 'Sincelejo' %} selected {% endif %}>Sincelejo</option>
+    <option value="valledupar" {% if persona.ciudad == 'Valledupar' %} selected {% endif %}>Valledupar</option>
+    <option value="monteria" {% if persona.ciudad == 'Montería' %} selected {% endif %}>Montería</option>
+    <option value="manizales" {% if persona.ciudad == 'Manizales' %} selected {% endif %}>Manizales</option>
+    <option value="santa marta" {% if persona.ciudad == 'Santa Marta' %} selected {% endif %}>Santa Marta</option>
+    <option value="buenaventura" {% if persona.ciudad == 'Buenaventura' %} selected {% endif %}>Buenaventura</option>
+    <option value="barrancabermeja" {% if persona.ciudad == 'Barrancabermeja' %} selected {% endif %}>Barrancabermeja</option>
+    <option value="florencia" {% if persona.ciudad == 'Florencia' %} selected {% endif %}>Florencia</option>
+    <option value="tunja" {% if persona.ciudad == 'Tunja' %} selected {% endif %}>Tunja</option>
+    <option value="quibdo" {% if persona.ciudad == 'Quibdó' %} selected {% endif %}>Quibdó</option>
+    <option value="arauca" {% if persona.ciudad == 'Arauca' %} selected {% endif %}>Arauca</option>
+    <option value="puerto carreño" {% if persona.ciudad == 'Puerto Carreño' %} selected {% endif %}>Puerto Carreño</option>
+    <option value="leticia" {% if persona.ciudad == 'Leticia' %} selected {% endif %}>Leticia</option>
+</select><br><br>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" value="{{ persona.correo }}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" value="{{ persona.telefono }}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="ocupacion" class="form-label">Ocupación:</label>
+                <select id="ocupacion" name="ocupacion" class="form-select" required>
+                    <option value="Empleado" {% if persona.ocupacion == 'Empleado' %} selected {% endif %}>Empleado</option>
+                    <option value="Independiente" {% if persona.ocupacion == 'Independiente' %} selected {% endif %}>Independiente</option>
+                    <option value="Pensionado" {% if persona.ocupacion == 'Pensionado' %} selected {% endif %}>Pensionado</option>
+                    <!-- Agrega aquí las demás opciones de ocupación -->
+                </select>
+            </div>
+            
+            <button class="btn btn-primary">Guardar Cambios</button>
+        </form>
+    </div>
+</body>
+</html>
