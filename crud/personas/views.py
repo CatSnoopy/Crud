@@ -38,7 +38,7 @@ def crear_personas(request):
              # Verificar si el número de documento ya existe en la base de datos
     if Personas.objects.filter(numero_de_documento=numero_de_documento_nuevo).exists():
         messages.error(request, 'Ya existe una persona con este número de documento.')
-        return redirect('ruta_de_tu_formulario')  
+        return redirect('formulario.htnl')  
         
     fecha_nacimiento = date.fromisoformat(fecha_nacimiento_nuevo)
     viable = es_viable(fecha_nacimiento)
