@@ -6,19 +6,37 @@
     <title>Lista de Personas</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-4">
         <h1>Lista de Personas</h1>
-        <ul class="list-group" id="lista-personas">
+
+        <div class="row row-cols-1 row-cols-md-2 g-4">
             {% for persona in personas %}
-            <li class="list-group-item" id="persona-{{ persona.numero_de_documento }}">
-                {{ persona.nombre }} {{ persona.apellidos }} - {{ persona.fecha_nacimiento }} - {{ persona.ciudad }} - {{ persona.correo }} - {{ persona.telefono }} - {{ persona.ocupacion }} - {{ persona.viable }}
-            </li>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ persona.nombre }} {{ persona.apellidos }}</h5>
+                        <p class="card-text">Fecha de Nacimiento: {{ persona.fecha_nacimiento }}</p>
+                        <p class="card-text">Ciudad: {{ persona.ciudad }}</p>
+                        <p class="card-text">Correo: {{ persona.correo }}</p>
+                        <p class="card-text">Teléfono: {{ persona.telefono }}</p>
+                        <p class="card-text">Ocupación: {{ persona.ocupacion }}</p>
+                        <p class="card-text">¿Es viable?: {{ persona.viable }}</p>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
-        </ul>
+        </div>
 
         <a href="{% url 'crear_personas' %}" class="btn btn-primary mt-3">Regresar al Formulario Principal</a>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
